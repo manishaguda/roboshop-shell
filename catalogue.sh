@@ -2,7 +2,7 @@ script_location=$(pwd)
 
 set -e
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash
-yum install nodejs -y
+yum install nodejs -y nodejs
 #useradd roboshop
 mkdir -p /app
 
