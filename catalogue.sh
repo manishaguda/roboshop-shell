@@ -20,6 +20,8 @@ systemctl start catalogue
 cp ${script_location}/files/mongodb.repo/etc/yum.repos.d/mongo.repo
 yum install mongodb-org-shell -y
 
+mongo --host localhost </app/schema/catalogue.js
+
 
 
 
