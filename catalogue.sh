@@ -14,7 +14,7 @@ unzip /tmp/catalogue.zip
 cd /app
 npm install
 
- cp ${script_location}/files/catalogue.service/etc/sustemd/system/catalogue.service
+ cp ${script_location}home/centos/roboshop-shell/files/catalogue.service/etc/sustemd/system/catalogue.service
  systemctl daemon-reload
 
 systemctl enable catalogue
