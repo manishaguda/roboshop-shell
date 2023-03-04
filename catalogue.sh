@@ -23,7 +23,7 @@ yum install mongodb-org-shell -y
 mongo --host localhost </app/schema/catalogue.js
 
 
-
+systemctl start catalogue
 
 
 
