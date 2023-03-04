@@ -4,7 +4,7 @@
 ZONE_ID="Z083811416CYPHO8YR2HZ"
 DOMAIN="manishag.online"
 SG_NAME="allow-all"
-env="dev"
+env=dev
 #############################
 
 
