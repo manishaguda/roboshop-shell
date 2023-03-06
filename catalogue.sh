@@ -24,7 +24,7 @@ yum install mongodb-org-shell -y
 mongo --host mongodb-dev.manishag.online </app/schema/catalogue.js
 
 
-systemctl start catalogue
+
 
 
 
