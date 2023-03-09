@@ -1,4 +1,4 @@
-souece common.sh
+source common.sh
 
 print_head "Configure nodeJS repos"
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>${LOG}
