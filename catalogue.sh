@@ -14,7 +14,7 @@ useradd roboshop &>>${LOG}
 status_check
 
 print_head "Downloading App content"
-mkdir -p /app&>>${LOG}
+mkdir -p /app &>>${LOG}
 
 print_head "Cleanup Old Content"
 curl -L -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue.zip&>>${LOG}
@@ -33,37 +33,33 @@ cd /app &>>${LOG}
 npm install &>>${LOG}
 status_check
 
-print_head
+print_head "Configuring Catalogue Service File"
 cp ${script_location}/files/catalogue.service /etc/systemd/system/catalogue.service &>>${LOG}
 status_check
 
-print_head
-systemctl daemon-reload
+print_head "Reload SystemD"
+systemctl daemon-reload &>>${LOG}
 status_check
 
-print_head
-systemctl enable catalogue
+print_head "Enable Catalogue Service"
+systemctl enable catalogue &>>${LOG}
 status_check
 
-print_head
-systemctl start catalogue
+print_head "Start Catalogue Service"
+systemctl start catalogue &>>${LOG}
 status_check
 
-print_head
-cp ${script_location}/files/mongodb.repo /etc/yum.repos.d/mongo.repo
+print_head"configuring Mongo Repo "
+cp ${script_location}/files/mongodb.repo /etc/yum.repos.d/mongo.repo &>>${LOG}
 status_check
 
-print_head
-yum install mongodb-org-shell -y
+print_head "Install Mongo Repo"
+yum install mongodb-org-shell -y &>>${LOG}
 status_check
 
-print_head
-mongo --host mongodb-dev.manishag.online </app/schema/catalogue.js
+print_head "Load Schema "
+mongo --host mongodb-dev.manishag.online </app/schema/catalogue.js &>>${LOG}
 status_check
-
-
-
-
 
 
 
