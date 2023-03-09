@@ -11,7 +11,7 @@ fi
 
 echo -e "\e[31m Remove Nginx Old Content\e[0m"
 rm -rf /usr/share/nginx/html/* &>>${LOG}
-fi [ $? -eq 0 ]; then
+if [ $? -eq 0 ]; then
   echo SUCCESS
 else
   echo FAILURE
