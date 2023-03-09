@@ -35,7 +35,7 @@ else
   echo FAILURE
 fi
 
-echo -e "\e[31m Copy Roboshop Nginx Config File\e0m"
+echo -e "\e[31m Copy Roboshop Nginx Configure File\e0m"
 cp ${script_location}/files/nginx-roboshop.conf /etc/nginx/default.d/roboshop.conf &>>${LOG}
 if [ $? -eq 0 ]; then
   echo SUCCESS
