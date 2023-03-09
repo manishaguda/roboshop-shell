@@ -1,61 +1,63 @@
-script_location=$(pwd)
-LOG=/tmp/roboshop.log
+souece common.sh
 
-status_check() {
-  if [ $? -eq 0 ]; then
-    echo -e "\e[32mSUCCESS\e[0m"
-  else
-    echo -e "\e[31mFAILURE\e[0m"
-    echo Refer Log file more information, LOG - ${LOG}
-    exit
-    fi
-}
-
-echo -e "\e[31m Configure nodeJS repos\e[0m"
+print_head "Configure nodeJS repos"
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>${LOG}
 status_check
 
-echo -e "\e[31m Install NodeJS\e[0m"
+print_head "Install NodeJS"
+echo -e "\e[31m \e[0m"
 yum install nodejs -y &>>${LOG}
 status_check
 
-echo -e "\e[31m Add Application User\e[0m"
+print_head "Add Application User"
 useradd roboshop &>>${LOG}
 status_check
 
-mkdir -p /app
+print_head "Downloading App content"
+mkdir -p /app&>>${LOG}
 
-curl -L -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue.zip
+print_head "Cleanup Old Content"
+curl -L -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue.zip&>>${LOG}
 status_check
 
-rm -rf /app/*
+print_head "Extracting App Content"
+rm -rf /app/* &>>${LOG}
 status_check
 
+print_head "Installing NodeJS Dependencies"
 cd /app
-unzip /tmp/catalogue.zip
+unzip /tmp/catalogue.zip &>>${LOG}
 
-cd /app
-npm install
+print_head "Configure Catalogue Service File"
+cd /app &>>${LOG}
+npm install &>>${LOG}
 status_check
 
-cp ${script_location}/files/catalogue.service /etc/systemd/system/catalogue.service
+print_head
+cp ${script_location}/files/catalogue.service /etc/systemd/system/catalogue.service &>>${LOG}
 status_check
 
+print_head
 systemctl daemon-reload
 status_check
 
+print_head
 systemctl enable catalogue
 status_check
 
+print_head
 systemctl start catalogue
 status_check
 
+print_head
 cp ${script_location}/files/mongodb.repo /etc/yum.repos.d/mongo.repo
 status_check
 
+print_head
 yum install mongodb-org-shell -y
 status_check
 
+print_head
 mongo --host mongodb-dev.manishag.online </app/schema/catalogue.js
 status_check
 
