@@ -3,11 +3,19 @@ LOG=/tmp/roboshop.log
 
 echo -e "\e[31m Install Nginx\e[0m"
 yum install nginx -y &>>${LOG}
-echo $?
+echo [ $? -eq 0 ] then
+  echo SUCCESS
+else
+  echo FAILURE
+  fi
 
 echo -e "\e[31m Remove Nginx Old Content\e[0m"
 rm -rf /usr/share/nginx/html/* &>>${LOG}
-echo $?
+echo [ $? -eq 0 ] then
+  echo SUCCESS
+else
+  echo FAILURE
+  fi 
 
 echo -e "\e[31m Download Frontend Contend\e[0m"
 curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend.zip &>>${LOG}
