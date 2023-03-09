@@ -19,7 +19,7 @@ echo -e "\e[31m Extract frontend content\e[0m"
 unzip /tmp/frontend.zip &>>${LOG}
 echo $?
 
-echo -e "\e[31m Copy Roboshop Nginx Config File \e0m"
+echo -e "\e[31m Copy Roboshop Nginx Config File\e0m"
 cp ${script_location}/files/nginx-roboshop.conf /etc/nginx/default.d/roboshop.conf &>>${LOG}
 echo $?
 
@@ -27,7 +27,7 @@ echo -e "\e[31m Enable Nginx\e[0m"
 systemctl enable nginx &>>${LOG}
 echo $?
 
-echo -e "\e[31m Restart Nginx \e[0m"
+echo -e "\e[31m Restart Nginx\e[0m"
 systemctl restart nginx &>>${LOG}
 echo $?
 
