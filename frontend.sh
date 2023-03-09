@@ -44,7 +44,7 @@ else
 fi
 
 echo -e "\e[31m Enable Nginx\e[0m"
-systemctl enable nginx &>>${LOG
+systemctl enable nginx &>>${LOG}
 if [ $? -eq 0 ]; then
   echo SUCCESS
 else
@@ -58,4 +58,3 @@ if [ $? -eq 0 ]; then
 else
   echo FAILURE
 fi
-
