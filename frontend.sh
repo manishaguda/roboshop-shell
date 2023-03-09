@@ -1,4 +1,4 @@
-souece common.sh
+source common.sh
 
 
 echo -e "\e[31m Install Nginx\e[0m"
