@@ -6,7 +6,7 @@ status_check() {
     echo -e "\e[1;32mSUCCESS\e[0m"
   else
     echo -e "\e[1;31mFAILURE\e[0m"
-    echo Refer Log file more information, LOG - ${LOG}
+    echo "Refer Log file more information, LOG - ${LOG}"
     exit
     fi
 }
@@ -82,15 +82,16 @@ LOAD_SCHEMA() {
         status_check
 
         print_head "Load Schema "
-              mysql -h mysql-dev.manishag.online -uroot -p${root_mysql_password} < /app/schema/shipping.sql
-              status_check
-             fi
+         mysql -h mysql-dev.manishag.online -uroot -p${root_mysql_password} < /app/schema/shipping.sql
+         status_check
+         fi
     fi
 }
 
-NODEJS() {print_head "Configuring NodeJS Repos"
-            curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>${LOG}
-            status_check
+NODEJS() {
+        print_head "Configuring NodeJS Repos"
+        curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>${LOG}
+        status_check
 
         print_head "Install NodeJS"
         yum install nodejs -y &>>${LOG}
