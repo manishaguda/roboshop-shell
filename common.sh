@@ -9,11 +9,11 @@ status_check() {
     echo "Refer Log file more information, LOG - ${LOG}"
     exit
     fi
-}
+ }
 
 print_head() {
   echo -e "\e[1m $1 \e[0m"
-}
+ }
 APP_PREREQ() {
     print_head "Add Application User"
     id roboshop &>>${LOG}
@@ -38,7 +38,7 @@ APP_PREREQ() {
       status_check
 
 
-}
+ }
 
 SYSTEMD_SETUP() {
       print_head "Configuring ${component} Service File"
@@ -56,7 +56,7 @@ SYSTEMD_SETUP() {
       print_head "Start ${component} Service"
       systemctl start ${component} &>>${LOG}
       status_check
-}
+ }
 
 LOAD_SCHEMA() {
     if [ ${schema_load} == "true" ]; then
@@ -86,7 +86,7 @@ LOAD_SCHEMA() {
          status_check
          fi
     fi
-}
+ }
 
 NODEJS() {
         print_head "Configuring NodeJS Repos"
@@ -110,7 +110,7 @@ NODEJS() {
 
 
 
-}
+ }
 
 MAVEN() {
 
@@ -132,4 +132,4 @@ MAVEN() {
   SYSTEMD_SETUP
 
   LOAD_SCHEMA
-}
+ }
