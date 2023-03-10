@@ -29,4 +29,4 @@ status_check
 
 print_head " Restart Nginx"
 systemctl restart nginx &>>${LOG}
-status_checki
+status_check
