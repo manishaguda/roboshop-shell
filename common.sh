@@ -68,7 +68,7 @@ LOAD_SCHEMA() {
 
       if [ ${schema_type} == "mongo" ]; then
         print_head "configuring Mongo Repo "
-        cp ${script_location}/files/mongodb.repo /etc/yum.repos.d/mongo.repo &>>${LOG}
+        cp ${script_location}/files/mongodb.repo /etc/yum.repos.d/mongo.repo &>>${LOG} &>>${LOG}
         status_check
 
         print_head "Install Mongo Repo"
@@ -76,7 +76,7 @@ LOAD_SCHEMA() {
        status_check
 
        print_head "Load Schema "
-       mongo --host mongodb-dev.manishag.online </app/schema/${component}.js &>>${LOG}
+       mongo --host mongodb-dev.manishag.online </app/schema/${component}.js &>>${LOG} &>>${LOG}
        status_check
       fi
 
@@ -87,7 +87,7 @@ LOAD_SCHEMA() {
         status_check
 
         print_head "Load Schema "
-         mysql -h mysql-dev.manishag.online -uroot -p${root_mysql_password} < /app/schema/shipping.sql
+         mysql -h mysql-dev.manishag.online -uroot -p${root_mysql_password} < /app/schema/shipping.sql &>>${LOG}
          status_check
          fi
     fi
@@ -126,12 +126,12 @@ MAVEN() {
   APP_PREREQ
 
   print_head "Build a package"
-  mvn clean package
+  mvn clean package &>>${LOG}
 
   status_check
 
   print_head "Copy App File To App Location"
-  mv target/${component}g-1.0.jar ${component}.jar &>>${LOG}
+  mv target/${component}-1.0.jar ${component}.jar &>>${LOG}
   status_check
 
   SYSTEMD_SETUP
