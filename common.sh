@@ -68,7 +68,7 @@ NODEJS() {
   systemctl start user &>>${LOG}
   status_check
 
-  print_head"configuring Mongo Repo "
+  print_head "configuring Mongo Repo "
   cp ${script_location}/files/mongodb.repo /etc/yum.repos.d/mongo.repo &>>${LOG}
   status_check
 
