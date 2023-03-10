@@ -77,7 +77,7 @@ NODEJS() {
   status_check
 
   print_head "Load Schema "
-  mongo --host mongodb-dev.manishag.online </app/schema/user.js &>>${LOG}
+  mongo --host mongodb-dev.manishag.online </app/schema/${component}.js &>>${LOG}
   status_check
 
 }
