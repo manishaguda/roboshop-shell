@@ -22,7 +22,7 @@ systemctl enable mysqld &>>${LOG}
 status_check
 
 print_head "Start MySql"
-systemctl restart mysql &>>${LOG}
+systemctl restart mysqld &>>${LOG}
 status_check
 
 print_head "Reset Default Database Passwoed"
