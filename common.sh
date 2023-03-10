@@ -60,12 +60,12 @@ NODEJS() {
   systemctl daemon-reload &>>${LOG}
   status_check
 
-  print_head "Enable user Service"
-  systemctl enable user &>>${LOG}
+  print_head "Enable ${component} Service"
+  systemctl enable ${component} &>>${LOG}
   status_check
 
-  print_head "Start user Service"
-  systemctl start user &>>${LOG}
+  print_head "Start ${component} Service"
+  systemctl start ${component} &>>${LOG}
   status_check
 
   print_head "configuring Mongo Repo "
