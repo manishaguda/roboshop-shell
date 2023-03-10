@@ -60,11 +60,11 @@ NODEJS() {
   systemctl daemon-reload &>>${LOG}
   status_check
 
-  print_head "Enable ${component} Service"
+  print_head "Enable user Service"
   systemctl enable user &>>${LOG}
   status_check
 
-  print_head "Start ${component} Service"
+  print_head "Start user Service"
   systemctl start user &>>${LOG}
   status_check
 
