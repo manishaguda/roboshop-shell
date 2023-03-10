@@ -9,7 +9,7 @@ dnf module enable redis:remi-6.2 -y &>>${LOG}
  status_check
 
 print_head "Install Redis"
-yum install Redis-org -y &>>${LOG}
+yum install redis-org -y &>>${LOG}
 status_check
 
 print_head "Update Redis Listen Address"
