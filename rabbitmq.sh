@@ -34,7 +34,10 @@ status_check
 
 
 print_head "Add Tags To Application User"
-rabbitmqctl set_user_tags roboshop administrator &>>${LOG}
+rabbitmqctl list _users | grep roboshop &>>${LOG}
+if [ $& -ne 0 ]; then
+  rabbitmqctl set_user_tags roboshop administrator &>>${LOG}
+fi
 status_check
 
 
