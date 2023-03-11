@@ -28,18 +28,16 @@ print_head "Start RabbitMQ Server"
 systemctl start rabbitmq-server &>>${LOG}
 status_check
 
-print_head "Add Application Configure"
-rabbitmqctl add_user roboshop roboshop123 &>>${LOG}
-status_check
-
-
-print_head "Add Tags To Application User"
-rabbitmqctl list _users | grep roboshop &>>${LOG}
+print_head "Add Application User"
+rabbitmqctl list_users | grep roboshop &>>${LOG}
 if [ $& -ne 0 ]; then
-  rabbitmqctl set_user_tags roboshop administrator &>>${LOG}
+  rabbitmqctl add_user roboshop ${roboshop_rabbitmq_password} &>>${LOG}
 fi
 status_check
 
+print_head "Add Tags To Application User"
+rabbitmqctl set_user_tags roboshop administrator &>>${LOG}
+status_check
 
 print_head "Add Permission To Application User"
 rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" &>>${LOG}
