@@ -159,5 +159,5 @@ PHYTHON() {
 
     SYSTEMD_SETUP
 
-    LOAD_SCHEMA
+
 }
