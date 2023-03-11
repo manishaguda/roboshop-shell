@@ -39,5 +39,5 @@ status_check
 
 
 print_head "Add Permission To Application User"
-rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
+rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" &>>${LOG}
 status_check
