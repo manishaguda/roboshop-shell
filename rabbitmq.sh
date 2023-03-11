@@ -8,12 +8,12 @@ if [ -z "${roboshop_rabbitmq_password}" ]; then
 
 
 print_head "Configure Erlang Yum Repos"
-curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | sudo &>>${LOG}
+curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | sudo bash &>>${LOG}
 status_check
 
 
 print_head "Configure RabbitMQ Yum Repos"
-curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo &>>${LOG}
+curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash &>>${LOG}
 status_check
 
 print_head "Install RabbitMQ & Erlang"
