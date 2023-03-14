@@ -71,7 +71,7 @@ LOAD_SCHEMA() {
         cp ${script_location}/files/mongodb.repo /etc/yum.repos.d/mongo.repo &>>${LOG} &>>${LOG}
         status_check
 
-        print_head "Install Mongo Repo"
+       print_head "Install Mongo Repo"
        yum install mongodb-org-shell -y &>>${LOG}
        status_check
 
