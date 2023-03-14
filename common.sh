@@ -64,10 +64,10 @@ SYSTEMD_SETUP() {
  }
 
 LOAD_SCHEMA() {
-    if [ ${schema_load} == "true" ]; then
+    if [ ${schema_load}  ==  "true" ]; then
 
-      if [ ${schema_type} == "mongo" ]; then
-        print_head "configuring Mongo Repo "
+      if [ ${schema_type}  ==  "mongo" ]; then
+        print_head "configuring Mongo Repo"
         cp ${script_location}/files/mongodb.repo /etc/yum.repos.d/mongo.repo &>>${LOG} &>>${LOG}
         status_check
 
@@ -75,12 +75,12 @@ LOAD_SCHEMA() {
        yum install mongodb-org-shell -y &>>${LOG}
        status_check
 
-       print_head "Load Schema "
+       print_head "Load Schema"
        mongo --host mongodb-dev.manishag.online </app/schema/${component}.js &>>${LOG} &>>${LOG}
        status_check
       fi
 
-      if [ ${schema_type} == "mysql" ]; then
+      if [ ${schema_type}  ==  "mysql" ]; then
 
         print_head "Install MySQl Client"
         yum install mysql -y &>>${LOG}
